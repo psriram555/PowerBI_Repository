@@ -1,0 +1,19 @@
+relationship f384a309-3cf9-402c-a5c5-2d7138843dbe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: sales_transactions.dateTime
+	toColumn: LocalDateTable_40f6f702-3931-4ea4-8930-15a51a4e0872.Date
+
+relationship AutoDetected_e1561a6e-d9a5-4d3e-a8a2-8baab031390e
+	fromColumn: sales_transactions.franchiseID
+	toColumn: sales_franchises.franchiseID
+
+relationship cf31c6d7-9881-7c72-f0e2-0fd820a0a0e3
+	fromColumn: sales_transactions.customerID
+	toColumn: sales_customers.customerID
+
+relationship f1bc31e5-8923-b934-594b-0206fe92583f
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: sales_franchises.supplierID
+	toColumn: sales_suppliers.supplierID
+
