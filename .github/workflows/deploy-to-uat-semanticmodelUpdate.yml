@@ -30,7 +30,7 @@ jobs:
           echo "🔍 Finding all expressions.tmdl files…"
           find ./SematicModels_Folder -type f -path "*/definition/expressions.tmdl" -print0 \
           | while IFS= read -r -d '' TMDL; do
-            echo "  • Updating $TMDL"
+            echo "  • Found $TMDL"
             sed -i "s/\(expression\s\+Catalog_Param\s*=\s*\)\".*\"/\1\"$Catalog\"/" "$TMDL"
             sed -i "s/\(expression\s\+Schema_Param\s*=\s*\)\".*\"/\1\"$Schema\"/" "$TMDL"
             sed -i "s/\(expression\s\+Host_param\s*=\s*\)\".*\"/\1\"$Host\"/" "$TMDL"
@@ -38,13 +38,22 @@ jobs:
           done
           echo "✅ All expressions.tmdl updated for UAT."
 
+      - name: Show updated expressions.tmdl (for logs)
+        run: |
+          find ./SematicModels_Folder -type f -path "*/definition/expressions.tmdl" -exec cat {} \;
+
       - name: Commit and push updated expressions.tmdl files
         if: github.ref == 'refs/heads/UAT_branch'
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          # stage every expressions.tmdl under any SemanticModel folder
-          git add SematicModels_Folder/**/*.SemanticModel/definition/expressions.tmdl
+          
+          # Debugging: print the files we intend to add
+          echo "Files to commit:"
+          find ./SematicModels_Folder -type f -path "*/definition/expressions.tmdl" -print0
+
+          # Stage all expressions.tmdl files found
+          git add $(find ./SematicModels_Folder -type f -path "*/definition/expressions.tmdl" -print0)
+
           git commit -m "Auto-update expressions.tmdl with UAT values" || echo "No changes to commit"
           git push origin UAT_branch || echo "No changes to push"
-
