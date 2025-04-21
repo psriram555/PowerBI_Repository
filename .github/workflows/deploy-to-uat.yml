@@ -3,7 +3,7 @@ name: Deploy Linked Reports to Power BI UAT
 on:
   push:
     branches:
-      - uat
+      -UAT2
 
 jobs:
   deploy:
