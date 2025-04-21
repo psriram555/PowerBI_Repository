@@ -34,6 +34,11 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+
+          # Fetch all remote branches to ensure UAT_branch is available
+          git fetch origin
+
+          # Checkout the base branch of the PR (e.g., UAT_branch)
           git checkout ${{ github.event.pull_request.base.ref }}
           git pull origin ${{ github.event.pull_request.base.ref }}
 
