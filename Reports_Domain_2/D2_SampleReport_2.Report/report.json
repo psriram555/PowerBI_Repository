@@ -1,0 +1,42 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.62\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Trip_details",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "4634a64569f0486501d8",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"b20419217a54b285658c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":321.2623128561213,\"y\":166.30049136081573,\"z\":0,\"width\":638.7450690904059,\"height\":498.9014740824472,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Trips.tpep_dropoff_datetime\"},{\"queryRef\":\"Sum(Trips.trip_distance)\"},{\"queryRef\":\"Sum(Trips.pickup_zip)\"},{\"queryRef\":\"Sum(Trips.fare_amount)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Trips\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"tpep_dropoff_datetime\"},\"Name\":\"Trips.tpep_dropoff_datetime\",\"NativeReferenceName\":\"tpep_dropoff_datetime\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"trip_distance\"}},\"Function\":0},\"Name\":\"Sum(Trips.trip_distance)\",\"NativeReferenceName\":\"Sum of trip_distance\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"pickup_zip\"}},\"Function\":0},\"Name\":\"Sum(Trips.pickup_zip)\",\"NativeReferenceName\":\"Sum of pickup_zip\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"fare_amount\"}},\"Function\":0},\"Name\":\"Sum(Trips.fare_amount)\",\"NativeReferenceName\":\"Sum of fare_amount\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 498.90,
+          "width": 638.75,
+          "x": 321.26,
+          "y": 166.30,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

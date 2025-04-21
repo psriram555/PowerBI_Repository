@@ -1,0 +1,109 @@
+table sales_transactions
+	lineageTag: 57d4776f-8e2f-4989-adcc-2338c982c4ca
+
+	column transactionID
+		dataType: int64
+		formatString: 0
+		lineageTag: a4433661-5c40-4fe3-8eae-b1e2867e8dff
+		summarizeBy: count
+		sourceColumn: transactionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column customerID
+		dataType: int64
+		formatString: 0
+		lineageTag: 93909ee0-4f33-4eb2-97be-e20b7a989f86
+		summarizeBy: none
+		sourceColumn: customerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column franchiseID
+		dataType: int64
+		formatString: 0
+		lineageTag: e62c4012-59b7-43da-9e8b-3054d0d5aa47
+		summarizeBy: none
+		sourceColumn: franchiseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column dateTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 46ef3342-3851-41e5-9833-bc4aa36256e1
+		summarizeBy: none
+		sourceColumn: dateTime
+
+		variation Variation
+			isDefault
+			relationship: f384a309-3cf9-402c-a5c5-2d7138843dbe
+			defaultHierarchy: LocalDateTable_40f6f702-3931-4ea4-8930-15a51a4e0872.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column product
+		dataType: string
+		lineageTag: cfe73db2-120e-42f6-a884-9872ddde70ff
+		summarizeBy: none
+		sourceColumn: product
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: c88ecca9-c233-49c9-aa94-af68f0a41dda
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column unitPrice
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f75ee15-17be-4557-a14c-575c63b37b2d
+		summarizeBy: sum
+		sourceColumn: unitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column totalPrice
+		dataType: int64
+		formatString: 0
+		lineageTag: d6ed4901-b1ab-4a47-bbc9-af7974d0aa54
+		summarizeBy: sum
+		sourceColumn: totalPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	column paymentMethod
+		dataType: string
+		lineageTag: 3db5fbf9-f8f7-4417-abe9-c7580f81f6f4
+		summarizeBy: none
+		sourceColumn: paymentMethod
+
+		annotation SummarizationSetBy = Automatic
+
+	column cardNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 7e85bd0a-d9cc-4fe1-bb1c-39057fe25c94
+		summarizeBy: sum
+		sourceColumn: cardNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sales_transactions = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs(Host_param, HttpPath_param, [Catalog=Catalog_Param, Database=Schema_Param, EnableAutomaticProxyDiscovery=null]),
+				    sales_transactions_bakehouse_dev_catalog_dev = Source{[Item="sales_transactions",Schema=Schema_Param,Catalog=Catalog_Param]}[Data]
+				in
+				    sales_transactions_bakehouse_dev_catalog_dev
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

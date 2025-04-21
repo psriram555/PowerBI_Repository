@@ -1,0 +1,44 @@
+name: Update definition.pbir for UAT
+
+on:
+  pull_request:
+    branches:
+      - UAT_branch
+
+jobs:
+  update-definition:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Read config and update all definition.pbir files
+        run: |
+          DEV_CONN_STRING=$(jq -r '.Dev.connectionString' deploy-config.json)
+          DEV_MODEL_ID=$(jq -r '.Dev.pbiModelDatabaseName' deploy-config.json)
+          UAT_CONN_STRING=$(jq -r '.UAT.connectionString' deploy-config.json)
+          UAT_MODEL_ID=$(jq -r '.UAT.pbiModelDatabaseName' deploy-config.json)
+
+          echo "Replacing in all definition.pbir files..."
+          for file in $(find . -name "definition.pbir"); do
+            echo "Updating $file"
+            sed -i "s|$DEV_CONN_STRING|$UAT_CONN_STRING|g" "$file"
+            sed -i "s|$DEV_MODEL_ID|$UAT_MODEL_ID|g" "$file"
+          done
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add .
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit."
+          else
+            BRANCH_NAME=$(jq -r .pull_request.head.ref "$GITHUB_EVENT_PATH")
+            git commit -m "🔁 Updated definition.pbir for UAT using deploy-config.json"
+            git push --force origin HEAD:$BRANCH_NAME
+          fi
+
