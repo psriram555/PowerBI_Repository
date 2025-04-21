@@ -29,7 +29,7 @@ jobs:
           HttpPath=$(jq -r '.uat.HttpPath_param' $CONFIG_FILE)
 
           echo "🔍 Looking for all SemanticModel folders…"
-          for DIR in ./SematicModels_Folder/*/*.SemanticModel; do
+          for DIR in ./SematicModels_Folder/*.SemanticModel; do
             TMDL_FILE="$DIR/definition/expressions.tmdl"
 
             if [ -f "$TMDL_FILE" ]; then
@@ -47,7 +47,7 @@ jobs:
 
       - name: Show updated expressions.tmdl (for logs)
         run: |
-          for DIR in ./SematicModels_Folder/*/*.SemanticModel; do
+          for DIR in ./SematicModels_Folder/*.SemanticModel; do
             TMDL_FILE="$DIR/definition/expressions.tmdl"
             if [ -f "$TMDL_FILE" ]; then
               echo "📄 Showing $TMDL_FILE"
@@ -60,7 +60,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          # Add all updated expressions.tmdl files found in any subdirectory
-          git add ./SematicModels_Folder/*/*.SemanticModel/definition/expressions.tmdl
+          git add ./SematicModels_Folder/*.SemanticModel/definition/expressions.tmdl
           git commit -m "Auto-update expressions.tmdl with UAT values" || echo "No changes to commit"
           git push origin UAT_branch || echo "No changes to push"
