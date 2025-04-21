@@ -1,0 +1,10 @@
+{
+  "UAT": {
+    "connectionString": "Data Source=powerbi://api.powerbi.com/v1.0/myorg/SemanticModels_UAT;Initial Catalog=SemanticModel_of_Domain_1;Access Mode=readonly;Integrated Security=ClaimsToken",
+    "pbiModelDatabaseName": "685ca890-1238-4e38-8e6e-5a8d3e421778"
+  },
+  "Dev": {
+    "connectionString": "Data Source=powerbi://api.powerbi.com/v1.0/myorg/SemanticModels_Dev;Initial Catalog=SemanticModel_of_Domain_1;Access Mode=readonly;Integrated Security=ClaimsToken",
+    "pbiModelDatabaseName": "06e601c3-e1a7-4481-836e-30d2076f8636"
+  }
+}
