@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.62\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.62\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -27,13 +27,13 @@
       "name": "63ba5087859bd9fb26ae",
       "visualContainers": [
         {
-          "config": "{\"name\":\"0ec8ece48cc93159d1e2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":86.7590027700831,\"y\":20.941828254847646,\"z\":1001,\"width\":362.9916897506925,\"height\":98.72576177285319,\"tabOrder\":1001}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"sales_suppliers.continent\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_suppliers\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"continent\"},\"Name\":\"sales_suppliers.continent\",\"NativeReferenceName\":\"continent\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "config": "{\"name\":\"0ec8ece48cc93159d1e2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":86.7590027700831,\"y\":20.941828254847646,\"z\":2000,\"width\":362.9916897506925,\"height\":98.72576177285319,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"sales_suppliers.continent\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_suppliers\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"continent\"},\"Name\":\"sales_suppliers.continent\",\"NativeReferenceName\":\"continent\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
           "filters": "[]",
           "height": 98.73,
           "width": 362.99,
           "x": 86.76,
           "y": 20.94,
-          "z": 1001.00
+          "z": 2000.00
         },
         {
           "config": "{\"name\":\"3f63879893ec260439d5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":86.7590027700831,\"y\":186.4819944598338,\"z\":0,\"width\":561.4404432132964,\"height\":402.8808864265928,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"sales_franchises.country\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(sales_transactions.totalPrice)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_franchises\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"sales_transactions\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"country\"},\"Name\":\"sales_franchises.country\",\"NativeReferenceName\":\"country\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"totalPrice\"}},\"Function\":0},\"Name\":\"Sum(sales_transactions.totalPrice)\",\"NativeReferenceName\":\"Sum of totalPrice\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"totalPrice\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
@@ -54,13 +54,13 @@
           "z": 1000.00
         },
         {
-          "config": "{\"name\":\"d0429cc961b4d1883eee\",\"layouts\":[{\"id\":0,\"position\":{\"x\":548.4764542936288,\"y\":20.941828254847646,\"z\":1002,\"width\":362.9916897506925,\"height\":98.72576177285319,\"tabOrder\":1002}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"sales_franchises.country\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_franchises\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"country\"},\"Name\":\"sales_franchises.country\",\"NativeReferenceName\":\"country\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "config": "{\"name\":\"d0429cc961b4d1883eee\",\"layouts\":[{\"id\":0,\"position\":{\"x\":548.4764542936288,\"y\":20.941828254847646,\"z\":3000,\"width\":362.9916897506925,\"height\":98.72576177285319,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"sales_franchises.country\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_franchises\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"country\"},\"Name\":\"sales_franchises.country\",\"NativeReferenceName\":\"country\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
           "filters": "[]",
           "height": 98.73,
           "width": 362.99,
           "x": 548.48,
           "y": 20.94,
-          "z": 1002.00
+          "z": 3000.00
         }
       ],
       "width": 1280.00
