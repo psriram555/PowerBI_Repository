@@ -27,7 +27,7 @@
       "name": "28d6fd038f7f303cebf8",
       "visualContainers": [
         {
-          "config": "{\"name\":\"469dc6807fae359f92a9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":704.8873099725485,\"y\":39.68534452928557,\"z\":1000,\"width\":372.286327250917,\"height\":107.71736372234655,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"sales_franchises.country\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_franchises\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"country\"},\"Name\":\"sales_franchises.country\",\"NativeReferenceName\":\"country\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "config": "{\"name\":\"469dc6807fae359f92a9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":704.8873099725485,\"y\":39.68534452928557,\"z\":1000,\"width\":372.286327250917,\"height\":107.71736372234655,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"sales_franchises.country\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_franchises\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"country\"},\"Name\":\"sales_franchises.country\",\"NativeReferenceName\":\"country\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
           "filters": "[]",
           "height": 107.72,
           "width": 372.29,
