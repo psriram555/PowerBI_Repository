@@ -1,0 +1,36 @@
+name: Deploy Linked Reports to Power BI UAT
+
+on:
+  push:
+    branches:
+      - uat
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Power BI CLI
+      run: |
+        npm install -g powerbi-cli
+        powerbi --version
+
+    - name: Authenticate with Power BI using Personal Access Token (PAT)
+      run: |
+        powerbi login --token ${{ secrets.PBI_PAT }}
+
+    - name: Deploy all PBIP Linked Reports to UAT
+      run: |
+        for folder in $(find . -mindepth 1 -maxdepth 1 -type d); do
+          if [ -f "$folder/definition.pbir" ]; then
+            echo "Deploying $folder to Power BI UAT workspace..."
+            powerbi report import \
+              --workspace-id ${{ secrets.PBI_WORKSPACE_ID_UAT }} \
+              --name "$(basename $folder)" \
+              --pbip-path "$folder" \
+              --verbose
+          fi
+        done
