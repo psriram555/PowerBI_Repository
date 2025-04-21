@@ -1,0 +1,101 @@
+table sales_suppliers
+	lineageTag: 20686583-b313-48c3-9f6c-57cfb3d0bcba
+
+	column supplierID
+		dataType: int64
+		formatString: 0
+		lineageTag: 0dd279fd-fca0-425c-a8e2-fea28d316dcb
+		summarizeBy: none
+		sourceColumn: supplierID
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 82a6104f-d0b1-48ef-8733-f205954382cb
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column ingredient
+		dataType: string
+		lineageTag: 70d778ec-0a1a-4278-853a-79112c68a55c
+		summarizeBy: none
+		sourceColumn: ingredient
+
+		annotation SummarizationSetBy = Automatic
+
+	column continent
+		dataType: string
+		lineageTag: 247b3029-de35-42f0-8902-9226b7b66b61
+		summarizeBy: none
+		sourceColumn: continent
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 11132240-dd74-462d-9e47-7d02f4599756
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column district
+		dataType: string
+		lineageTag: 328be8e6-69c0-4f49-8fc7-c2de679a2bca
+		summarizeBy: none
+		sourceColumn: district
+
+		annotation SummarizationSetBy = Automatic
+
+	column size
+		dataType: string
+		lineageTag: e3a4e9e9-20ef-4e9e-ac04-33bbc5e384b7
+		summarizeBy: none
+		sourceColumn: size
+
+		annotation SummarizationSetBy = Automatic
+
+	column longitude
+		dataType: double
+		lineageTag: d3c89fa6-257c-4011-8699-b449a5cbbda8
+		summarizeBy: sum
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column latitude
+		dataType: double
+		lineageTag: a848c2fa-e0b2-4f76-aef9-72951ee480e9
+		summarizeBy: sum
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column approved
+		dataType: string
+		lineageTag: c3a5e77b-b17a-4999-9a5f-202695ce9d6e
+		summarizeBy: none
+		sourceColumn: approved
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sales_suppliers = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs(Host_param, HttpPath_param, [Catalog=Catalog_Param, Database=Schema_Param, EnableAutomaticProxyDiscovery=null]),
+				    sales_suppliers_bakehouse_dev_catalog_dev = Source{[Item="sales_suppliers",Schema=Schema_Param,Catalog=Catalog_Param]}[Data]
+				in
+				    sales_suppliers_bakehouse_dev_catalog_dev
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
