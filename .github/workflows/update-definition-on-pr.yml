@@ -3,7 +3,7 @@ name: Update definition.pbir for UAT
 on:
   pull_request:
     branches:
-      - UAT2
+      - UAT_branch
 
 jobs:
   update-definition:
