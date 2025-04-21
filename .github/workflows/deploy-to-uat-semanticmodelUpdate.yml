@@ -18,48 +18,33 @@ jobs:
       - name: Install jq (for parsing JSON)
         run: sudo apt-get install jq
 
-      - name: Update expressions.tmdl in all SemanticModel folders using UAT config
+      - name: Update expressions.tmdl in all folders using UAT config
         run: |
-          CONFIG_FILE="deploy-config-semanticmodelUpdate.json"
-          
-          echo "📦 Reading UAT values from $CONFIG_FILE..."
-          Catalog=$(jq -r '.uat.Catalog_Param' $CONFIG_FILE)
-          Schema=$(jq -r '.uat.Schema_Param' $CONFIG_FILE)
-          Host=$(jq -r '.uat.Host_param' $CONFIG_FILE)
-          HttpPath=$(jq -r '.uat.HttpPath_param' $CONFIG_FILE)
+          CONFIG="deploy-config-semanticmodelUpdate.json"
+          echo "📦 Reading UAT values from $CONFIG..."
+          Catalog=$(jq -r '.uat.Catalog_Param' $CONFIG)
+          Schema=$(jq -r '.uat.Schema_Param' $CONFIG)
+          Host=$(jq -r '.uat.Host_param' $CONFIG)
+          HttpPath=$(jq -r '.uat.HttpPath_param' $CONFIG)
 
-          echo "🔍 Looking for all SemanticModel folders…"
-          for DIR in ./SematicModels_Folder/*.SemanticModel; do
-            TMDL_FILE="$DIR/definition/expressions.tmdl"
-
-            if [ -f "$TMDL_FILE" ]; then
-              echo "  • Updating $TMDL_FILE"
-              sed -i "s/\(expression\s\+Catalog_Param\s*=\s*\)\".*\"/\1\"$Catalog\"/" "$TMDL_FILE"
-              sed -i "s/\(expression\s\+Schema_Param\s*=\s*\)\".*\"/\1\"$Schema\"/" "$TMDL_FILE"
-              sed -i "s/\(expression\s\+Host_param\s*=\s*\)\".*\"/\1\"$Host\"/" "$TMDL_FILE"
-              sed -i "s|\(expression\s\+HttpPath_param\s*=\s*\)\".*\"|\1\"$HttpPath\"|" "$TMDL_FILE"
-            else
-              echo "  ⚠️ No expressions.tmdl found in $DIR/definition"
-            fi
+          echo "🔍 Finding all expressions.tmdl files…"
+          find ./SematicModels_Folder -type f -path "*/definition/expressions.tmdl" -print0 \
+          | while IFS= read -r -d '' TMDL; do
+            echo "  • Updating $TMDL"
+            sed -i "s/\(expression\s\+Catalog_Param\s*=\s*\)\".*\"/\1\"$Catalog\"/" "$TMDL"
+            sed -i "s/\(expression\s\+Schema_Param\s*=\s*\)\".*\"/\1\"$Schema\"/" "$TMDL"
+            sed -i "s/\(expression\s\+Host_param\s*=\s*\)\".*\"/\1\"$Host\"/" "$TMDL"
+            sed -i "s|\(expression\s\+HttpPath_param\s*=\s*\)\".*\"|\1\"$HttpPath\"|" "$TMDL"
           done
-
           echo "✅ All expressions.tmdl updated for UAT."
 
-      - name: Show updated expressions.tmdl (for logs)
-        run: |
-          for DIR in ./SematicModels_Folder/*.SemanticModel; do
-            TMDL_FILE="$DIR/definition/expressions.tmdl"
-            if [ -f "$TMDL_FILE" ]; then
-              echo "📄 Showing $TMDL_FILE"
-              cat "$TMDL_FILE"
-            fi
-          done
-
-      - name: Commit and push changes back to UAT branch
+      - name: Commit and push updated expressions.tmdl files
         if: github.ref == 'refs/heads/UAT_branch'
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add ./SematicModels_Folder/*.SemanticModel/definition/expressions.tmdl
+          # stage every expressions.tmdl under any SemanticModel folder
+          git add SematicModels_Folder/**/*.SemanticModel/definition/expressions.tmdl
           git commit -m "Auto-update expressions.tmdl with UAT values" || echo "No changes to commit"
           git push origin UAT_branch || echo "No changes to push"
+
