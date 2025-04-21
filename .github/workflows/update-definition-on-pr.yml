@@ -3,7 +3,7 @@ name: Deploy Linked Reports to Power BI UAT
 on:
   push:
     branches:
-      - uat
+      - UAT2
 
 jobs:
   deploy:
@@ -18,13 +18,9 @@ jobs:
         npm install -g powerbi-cli
         powerbi --version
 
-    - name: Authenticate with Power BI using Service Principal
+    - name: Authenticate with Power BI using Personal Access Token (PAT)
       run: |
-        powerbi login \
-          --service-principal \
-          --client-id ${{ secrets.PBI_CLIENT_ID }} \
-          --client-secret ${{ secrets.PBI_CLIENT_SECRET }} \
-          --tenant ${{ secrets.PBI_TENANT_ID }}
+        powerbi login --token ${{ secrets.PBI_PAT }}
 
     - name: Deploy all PBIP Linked Reports to UAT
       run: |
