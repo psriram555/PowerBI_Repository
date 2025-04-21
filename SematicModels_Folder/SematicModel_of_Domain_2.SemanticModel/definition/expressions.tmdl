@@ -1,5 +1,5 @@
 /// provide the Host details
-expression Host_param = "dbc-4069458e-9508.cloud.databricks.com", IsParameterQueryRequired=true]
+expression Host_param = "dbc-4069458e-9508.cloud.databricks.com";, IsParameterQueryRequired=true]
 	lineageTag: 192cb56a-1673-4df5-878d-500aef386eb8
 
 	annotation PBI_NavigationStepName = Navigation
@@ -7,7 +7,7 @@ expression Host_param = "dbc-4069458e-9508.cloud.databricks.com", IsParameterQue
 	annotation PBI_ResultType = Text
 
 /// provide Http path
-expression HttpPath_param = "/sql/1.0/warehouses/73276b3bbb71597f", IsParameterQueryRequired=true]
+expression HttpPath_param = "/sql/1.0/warehouses/73276b3bbb71597f";, IsParameterQueryRequired=true]
 	lineageTag: e07aa790-6aca-4e37-9e9d-9d2f6ef6b559
 
 	annotation PBI_NavigationStepName = Navigation
