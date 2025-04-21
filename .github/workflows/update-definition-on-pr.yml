@@ -31,12 +31,13 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config --global user.name "sriram"
+          git config --global user.email "sriram.pippalla@impetus.com"
           git add .
           if git diff --cached --quiet; then
             echo "✅ No changes to commit."
           else
+            BRANCH_NAME=$(jq -r .pull_request.head.ref "$GITHUB_EVENT_PATH")
             git commit -m "🔁 Updated definition.pbir for UAT using deploy-config.json"
-            git push
+            git push origin HEAD:$BRANCH_NAME
           fi
