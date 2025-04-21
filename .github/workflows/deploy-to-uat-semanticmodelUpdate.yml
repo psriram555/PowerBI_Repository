@@ -34,10 +34,11 @@ jobs:
 
             if [ -f "$TMDL_FILE" ]; then
               echo "  • Updating $TMDL_FILE"
-              sed -i -E "s|(expression\s+Catalog_Param\s*=\s*)\"[^\"]*\"(\s*meta)|\1\"$Catalog\";\2|" "$TMDL_FILE"
-              sed -i -E "s|(expression\s+Schema_Param\s*=\s*)\"[^\"]*\"(\s*meta)|\1\"$Schema\";\2|" "$TMDL_FILE"
-              sed -i -E "s|(expression\s+Host_param\s*=\s*)\"[^\"]*\"(\s*meta)|\1\"$Host\";\2|" "$TMDL_FILE"
-              sed -i -E "s|(expression\s+HttpPath_param\s*=\s*)\"[^\"]*\"(\s*meta)|\1\"$HttpPath\";\2|" "$TMDL_FILE"
+              sed -i "s|\(expression\s\+Catalog_Param\s*=\s*\)\"[^\"]*\"|\1\"$Catalog\"|" "$TMDL_FILE"
+              sed -i "s|\(expression\s\+Schema_Param\s*=\s*\)\"[^\"]*\"|\1\"$Schema\"|" "$TMDL_FILE"
+              sed -i "s|\(expression\s\+Host_param\s*=\s*\)\"[^\"]*\"|\1\"$Host\"|" "$TMDL_FILE"
+              sed -i "s|\(expression\s\+HttpPath_param\s*=\s*\)\"[^\"]*\"|\1\"$HttpPath\"|" "$TMDL_FILE"
+
 
 
             else
