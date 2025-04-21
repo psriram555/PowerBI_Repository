@@ -20,7 +20,7 @@ jobs:
 
       - name: Update expressions.tmdl using UAT config
         run: |
-          CONFIG_FILE="deploy-config_semanticmodelUpdate.json"
+          CONFIG_FILE="deploy-config-semanticmodelUpdate.json"
           TMDL_FILE="./Report_SemanticModel_Test.SemanticModel/definition/expressions.tmdl"
 
           echo "📦 Reading values from config..."
