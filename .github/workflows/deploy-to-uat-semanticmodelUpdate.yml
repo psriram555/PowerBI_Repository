@@ -1,0 +1,51 @@
+name: Deploy Semantic Model to UAT
+
+on:
+  push:
+    branches: [UAT_branch]
+  pull_request:
+    branches: [UAT_branch]
+
+jobs:
+  update-uat-semanticmodel-params:
+    if: github.ref == 'refs/heads/UAT_branch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install jq (for parsing JSON)
+        run: sudo apt-get install jq
+
+      - name: Update expressions.tmdl using UAT config
+        run: |
+          CONFIG_FILE="deploy-config_semanticmodelUpdate.json"
+          TMDL_FILE="./Report_SemanticModel_Test.SemanticModel/definition/expressions.tmdl"
+
+          echo "📦 Reading values from config..."
+
+          Catalog=$(jq -r '.uat.Catalog_Param' $CONFIG_FILE)
+          Schema=$(jq -r '.uat.Schema_Param' $CONFIG_FILE)
+          Host=$(jq -r '.uat.Host_param' $CONFIG_FILE)
+          HttpPath=$(jq -r '.uat.HttpPath_param' $CONFIG_FILE)
+
+          echo "🔁 Updating expressions.tmdl..."
+          sed -i "s/\(expression\s\+Catalog_Param\s*=\s*\)\".*\"/\1\"$Catalog\"/" "$TMDL_FILE"
+          sed -i "s/\(expression\s\+Schema_Param\s*=\s*\)\".*\"/\1\"$Schema\"/" "$TMDL_FILE"
+          sed -i "s/\(expression\s\+Host_param\s*=\s*\)\".*\"/\1\"$Host\"/" "$TMDL_FILE"
+          sed -i "s|\(expression\s\+HttpPath_param\s*=\s*\)\".*\"|\1\"$HttpPath\"|" "$TMDL_FILE"
+
+          echo "✅ Updated expressions.tmdl for UAT."
+
+      - name: Show updated expressions.tmdl (for logs)
+        run: cat ./Report_SemanticModel_Test.SemanticModel/expressions.tmdl
+
+      - name: Commit and push changes back to UAT branch
+        if: github.ref == 'refs/heads/UAT_branch'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add ./Report_SemanticModel_Test.SemanticModel/expressions.tmdl
+          git commit -m "Auto-update expressions.tmdl with UAT values" || echo "No changes to commit"
+          git push origin uat || echo "No changes to push"
