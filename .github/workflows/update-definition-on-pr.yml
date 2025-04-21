@@ -29,4 +29,23 @@ jobs:
             sed -i "s|$DEV_MODEL_ID|$UAT_MODEL_ID|g" "$file"
           done
 
+      - name: Commit and push changes to UAT branch only
+        if: github.event.pull_request.base.ref == 'UAT_branch'
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
+          # Fetch all remote branches to ensure UAT_branch is available
+          git fetch origin
+
+          # Checkout the base branch of the PR (e.g., UAT_branch)
+          git checkout ${{ github.event.pull_request.base.ref }}
+          git pull origin ${{ github.event.pull_request.base.ref }}
+
+          git add .
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit."
+          else
+            git commit -m "🔁 Updated definition.pbir for UAT using deploy-config.json"
+            git push origin ${{ github.event.pull_request.base.ref }}
+          fi
