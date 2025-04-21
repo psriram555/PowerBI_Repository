@@ -1,0 +1,52 @@
+expression Host_param = "dbc-4069458e-9508.cloud.databricks.com" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 6ce222be-d43f-4428-ae71-781002caa601
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression HttpPath_param = "/sql/1.0/warehouses/73276b3bbb71597f" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 89f45eba-ade4-460c-a056-9aedd067f63c
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Catalog_Param = "catalog_dev" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: d7ff4175-1c20-4c2e-ae2c-c224d6b8f59d
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Schema_Param = "bakehouse_dev" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 6d2c9418-ef81-40a3-9a3a-64d192f8672a
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression media_customer_reviews =
+		let
+		    Source = DatabricksMultiCloud.Catalogs(Host_param, HttpPath_param, [Catalog=Catalog_Param, Database=Schema_Param, EnableAutomaticProxyDiscovery=null]),
+		    media_customer_reviews_bakehouse_dev_catalog_dev = Source{[Item="media_customer_reviews",Schema=Schema_Param,Catalog= Catalog_Param]}[Data]
+		in
+		    media_customer_reviews_bakehouse_dev_catalog_dev
+	lineageTag: a4a5cac8-0f8a-4fe2-a71f-87cd8d766a7a
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression media_gold_reviews_chunked =
+		let
+		    Source = DatabricksMultiCloud.Catalogs(Host_param, HttpPath_param, [Catalog=Catalog_Param, Database=Schema_Param, EnableAutomaticProxyDiscovery=null]),
+		    media_gold_reviews_chunked_bakehouse_dev_catalog_dev = Source{[Item="media_gold_reviews_chunked",Schema=Schema_Param,Catalog=Catalog_Param]}[Data]
+		in
+		    media_gold_reviews_chunked_bakehouse_dev_catalog_dev
+	lineageTag: 4cf9d135-87b6-4d56-a9e3-a9fd014740de
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

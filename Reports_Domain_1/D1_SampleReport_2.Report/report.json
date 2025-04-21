@@ -1,0 +1,60 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.62\",\"type\":2}},\"activeSectionIndex\":0,\"modelExtensions\":[{\"name\":\"extension\",\"entities\":[{\"name\":\"sales_customers\",\"extends\":\"sales_customers\",\"measures\":[{\"name\":\"Sum of totalPrice average per country\",\"dataType\":3,\"expression\":\"\\nAVERAGEX(\\n\\tKEEPFILTERS(VALUES('sales_franchises'[country])),\\n\\tCALCULATE(SUM('sales_transactions'[totalPrice]))\\n)\",\"hidden\":false,\"formatInformation\":{\"formatString\":\"G\",\"format\":\"General\",\"thousandSeparator\":false,\"currencyFormat\":null,\"dateTimeCustomFormat\":null},\"measureTemplate\":{\"daxTemplateName\":\"AveragePerCategory\",\"version\":0}}]}]}],\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "sales report",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "28d6fd038f7f303cebf8",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"469dc6807fae359f92a9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":704.8873099725485,\"y\":39.68534452928557,\"z\":1000,\"width\":372.286327250917,\"height\":107.71736372234655,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"sales_franchises.country\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_franchises\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"country\"},\"Name\":\"sales_franchises.country\",\"NativeReferenceName\":\"country\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 107.72,
+          "width": 372.29,
+          "x": 704.89,
+          "y": 39.69,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"df30b134d8fec5dcfd38\",\"layouts\":[{\"id\":0,\"position\":{\"x\":37.795566218367206,\"y\":102.04802878959147,\"z\":0,\"width\":585.8312763846917,\"height\":580.1619414519366,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"funnel\",\"projections\":{\"Category\":[{\"queryRef\":\"sales_suppliers.continent\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(sales_transactions.quantity)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_suppliers\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"sales_transactions\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"continent\"},\"Name\":\"sales_suppliers.continent\",\"NativeReferenceName\":\"continent\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"quantity\"}},\"Function\":0},\"Name\":\"Sum(sales_transactions.quantity)\",\"NativeReferenceName\":\"Sum of quantity\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"quantity\"}},\"Function\":0}}}]},\"autoSelectVisualType\":false,\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 580.16,
+          "width": 585.83,
+          "x": 37.80,
+          "y": 102.05,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"f6f02483cc1102fd5b66\",\"layouts\":[{\"id\":0,\"position\":{\"x\":668.741302972802,\"y\":189.449715370019,\"z\":2000,\"width\":612.068311195446,\"height\":531.1068943706515,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Y\":[{\"queryRef\":\"sales_customers.Sum of totalPrice average per country\"}],\"Category\":[{\"queryRef\":\"sales_franchises.country\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_customers\",\"Schema\":\"extension\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"sales_franchises\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Sum of totalPrice average per country\"},\"Name\":\"sales_customers.Sum of totalPrice average per country\",\"NativeReferenceName\":\"Sum of totalPrice average per country\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"country\"},\"Name\":\"sales_franchises.country\",\"NativeReferenceName\":\"country\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Sum of totalPrice average per country\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 531.11,
+          "width": 612.07,
+          "x": 668.74,
+          "y": 189.45,
+          "z": 2000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}
