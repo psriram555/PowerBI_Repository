@@ -15,7 +15,7 @@ expression HttpPath_param = "/sql/1.0/warehouses/73276b3bbb71597f" meta [IsParam
 	annotation PBI_ResultType = Text
 
 /// Provide the Catalog
-expression Catalog_param = "catalog_dev" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression Catalog_param = "catalog_uat" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: 9ac437b4-c0b8-4b16-bf7f-f458645919ea
 
 	annotation PBI_NavigationStepName = Navigation
@@ -23,7 +23,7 @@ expression Catalog_param = "catalog_dev" meta [IsParameterQuery=true, Type="Text
 	annotation PBI_ResultType = Text
 
 /// Provide Schema or Database
-expression Schema_param = "nyctaxi_dev" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression Schema_param = "nyctaxi_uat" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: cd62799b-2b0d-43f3-971c-f19b1e91f178
 
 	annotation PBI_NavigationStepName = Navigation
