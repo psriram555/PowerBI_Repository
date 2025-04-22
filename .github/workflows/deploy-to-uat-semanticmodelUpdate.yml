@@ -21,10 +21,12 @@ jobs:
       - name: Update expressions.tmdl in all SemanticModel folders using UAT config
         run: |
           CONFIG_FILE="deploy-config-semanticmodelUpdate.json"
-          
+
           echo "📦 Reading UAT values from $CONFIG_FILE..."
-          Catalog=$(jq -r '.uat.Catalog_Param' $CONFIG_FILE)
-          Schema=$(jq -r '.uat.Schema_Param' $CONFIG_FILE)
+          Catalog_Param=$(jq -r '.uat.Catalog_Param' $CONFIG_FILE)
+          Catalog_param=$(jq -r '.uat.Catalog_param // empty' $CONFIG_FILE)
+          Schema_Param=$(jq -r '.uat.Schema_Param' $CONFIG_FILE)
+          Schema_param=$(jq -r '.uat.Schema_param // empty' $CONFIG_FILE)
           Host=$(jq -r '.uat.Host_param' $CONFIG_FILE)
           HttpPath=$(jq -r '.uat.HttpPath_param' $CONFIG_FILE)
 
@@ -34,13 +36,22 @@ jobs:
 
             if [ -f "$TMDL_FILE" ]; then
               echo "  • Updating $TMDL_FILE"
-              sed -i "s|\(expression\s\+Catalog_Param\s*=\s*\)\"[^\"]*\"|\1\"$Catalog\"|" "$TMDL_FILE"
-              sed -i "s|\(expression\s\+Schema_Param\s*=\s*\)\"[^\"]*\"|\1\"$Schema\"|" "$TMDL_FILE"
+
+              # Catalog
+              sed -i "s|\(expression\s\+Catalog_Param\s*=\s*\)\"[^\"]*\"|\1\"$Catalog_Param\"|" "$TMDL_FILE"
+              if [ -n "$Catalog_param" ]; then
+                sed -i "s|\(expression\s\+Catalog_param\s*=\s*\)\"[^\"]*\"|\1\"$Catalog_param\"|" "$TMDL_FILE"
+              fi
+
+              # Schema
+              sed -i "s|\(expression\s\+Schema_Param\s*=\s*\)\"[^\"]*\"|\1\"$Schema_Param\"|" "$TMDL_FILE"
+              if [ -n "$Schema_param" ]; then
+                sed -i "s|\(expression\s\+Schema_param\s*=\s*\)\"[^\"]*\"|\1\"$Schema_param\"|" "$TMDL_FILE"
+              fi
+
+              # Host and HttpPath
               sed -i "s|\(expression\s\+Host_param\s*=\s*\)\"[^\"]*\"|\1\"$Host\"|" "$TMDL_FILE"
               sed -i "s|\(expression\s\+HttpPath_param\s*=\s*\)\"[^\"]*\"|\1\"$HttpPath\"|" "$TMDL_FILE"
-
-
-
             else
               echo "  ⚠️ No expressions.tmdl found in $DIR/definition"
             fi
@@ -66,5 +77,3 @@ jobs:
           git add ./SematicModels_Folder/*.SemanticModel/definition/expressions.tmdl
           git commit -m "Auto-update expressions.tmdl with UAT values" || echo "No changes to commit"
           git push origin UAT_branch || echo "No changes to push"
-
-
