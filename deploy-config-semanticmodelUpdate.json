@@ -3,18 +3,24 @@
     "Catalog_Param": "catalog_dev",
     "Schema_Param": "bakehouse_dev",
     "Host_param": "dbc-4069458e-9508.cloud.databricks.com",
-    "HttpPath_param": "/sql/1.0/warehouses/73276b3bbb71597f"
+    "HttpPath_param": "/sql/1.0/warehouses/73276b3bbb71597f",
+    "Catalog_param": "catalog_dev",
+    "Schema_param": "nyctaxi_dev"
   },
   "uat": {
     "Catalog_Param": "catalog_uat",
     "Schema_Param": "bakehouse_uat",
     "Host_param": "dbc-4069458e-9508.cloud.databricks.com",
-    "HttpPath_param": "/sql/1.0/warehouses/73276b3bbb71597f"
+    "HttpPath_param": "/sql/1.0/warehouses/73276b3bbb71597f",
+    "Catalog_param": "catalog_uat",
+    "Schema_param": "nyctaxi_uat"
   },
   "prod": {
     "Catalog_Param": "catalog_prod",
     "Schema_Param": "bakehouse_prod",
     "Host_param": "dbc-4069458e-9508.cloud.databricks.com",
-    "HttpPath_param": "/sql/1.0/warehouses/73276b3bbb71597f"
+    "HttpPath_param": "/sql/1.0/warehouses/73276b3bbb71597f",
+    "Catalog_param": "catalog_prod",
+    "Schema_param": "nyctaxi_prod"
   }
 }
