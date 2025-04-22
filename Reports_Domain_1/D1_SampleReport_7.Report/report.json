@@ -1,0 +1,60 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.62\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "ReportPage",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "63ba5087859bd9fb26ae",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"1b8b23362f6a08b05cc1\",\"layouts\":[{\"id\":0,\"position\":{\"x\":891.9753627534661,\"y\":207.87561420101966,\"z\":2001,\"width\":300.4747514360193,\"height\":151.18226487346882,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(sales_transactions.totalPrice)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_transactions\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"totalPrice\"}},\"Function\":0},\"Name\":\"Sum(sales_transactions.totalPrice)\",\"NativeReferenceName\":\"Sum of totalPrice\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"totalPrice\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 151.18,
+          "width": 300.47,
+          "x": 891.98,
+          "y": 207.88,
+          "z": 2001.00
+        },
+        {
+          "config": "{\"name\":\"1f42b57e7bc271d6984b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":342.04987427622325,\"y\":359.0578790744885,\"z\":2000,\"width\":385.5147754273455,\"height\":330.7112044107131,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"sales_suppliers.continent\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(sales_transactions.quantity)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_suppliers\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"sales_transactions\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"continent\"},\"Name\":\"sales_suppliers.continent\",\"NativeReferenceName\":\"continent\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"quantity\"}},\"Function\":0},\"Name\":\"Sum(sales_transactions.quantity)\",\"NativeReferenceName\":\"Sum of quantity\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"quantity\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 330.71,
+          "width": 385.51,
+          "x": 342.05,
+          "y": 359.06,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"33d19d2299b5815fb0b6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":120.94581189877506,\"y\":190.8676094027544,\"z\":1000,\"width\":300.4747514360193,\"height\":151.18226487346882,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"sales_suppliers.continent\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"sales_suppliers\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"continent\"},\"Name\":\"sales_suppliers.continent\",\"NativeReferenceName\":\"continent\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 151.18,
+          "width": 300.47,
+          "x": 120.95,
+          "y": 190.87,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}
