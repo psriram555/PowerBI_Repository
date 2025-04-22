@@ -12,14 +12,14 @@ expression HttpPath_param = "/sql/1.0/warehouses/73276b3bbb71597f" meta [IsParam
 
 	annotation PBI_ResultType = Text
 
-expression Catalog_Param = "catalog_dev" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression Catalog_Param = "catalog_uat" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: d7ff4175-1c20-4c2e-ae2c-c224d6b8f59d
 
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Text
 
-expression Schema_Param = "bakehouse_dev" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression Schema_Param = "bakehouse_uat" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: 6d2c9418-ef81-40a3-9a3a-64d192f8672a
 
 	annotation PBI_NavigationStepName = Navigation
